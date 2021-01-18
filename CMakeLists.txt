@@ -4,8 +4,6 @@
 
 cmake_minimum_required(VERSION 3.19.0)
 
-project(Catch2Fiddly)
-
 # use clang++ for compilation rather than g++
 set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 
@@ -13,6 +11,11 @@ set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_FLAGS "-g -Wall -Wextra -Werror")
+
+project(Catch2Fiddly)
+
+# Catch2 target and test addition
+add_subdirectory(lib/Catch2)
 
 # add the executable -- but have the sources stashed in a
 # different directory
@@ -34,3 +37,4 @@ target_link_libraries(DoSums PRIVATE pthread)
 # Cmake defaults to this on
 set_target_properties(DoSums
                       PROPERTIES CXX_EXTENSIONS OFF)
+
