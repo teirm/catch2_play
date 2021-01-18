@@ -5,6 +5,6 @@
 
 int main()
 {
-    std::cout << "Nothing happening here" << std::endl;
+    std::cout << "Nothing happening here\n";
     return 0;
 }
