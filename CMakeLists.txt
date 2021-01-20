@@ -33,10 +33,14 @@ add_executable(DoSums
 target_include_directories(DoSums
                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-
 # Add test executable as a target
 add_executable(summer_tests
+               ${CMAKE_CURRENT_SOURCE_DIR}/src/Summer.cpp
                ${CMAKE_CURRENT_SOURCE_DIR}/tests/summer_tests.cpp)
+# Need to add includes to the test target
+target_include_directories(summer_tests
+                           PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
 target_link_libraries(summer_tests
                       PRIVATE
                       Catch2::Catch2WithMain)

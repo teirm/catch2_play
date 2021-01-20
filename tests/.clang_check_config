@@ -1,3 +1,4 @@
+-I../include
 -I../lib/Catch2/src
 -Wall
 -Wextra
