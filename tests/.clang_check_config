@@ -1,0 +1,5 @@
+-I../lib/Catch2/src
+-Wall
+-Wextra
+-std=c++17
+-Wno-c++17-extensions

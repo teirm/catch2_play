@@ -33,6 +33,14 @@ add_executable(DoSums
 target_include_directories(DoSums
                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+
+# Add test executable as a target
+add_executable(summer_tests
+               ${CMAKE_CURRENT_SOURCE_DIR}/tests/summer_tests.cpp)
+target_link_libraries(summer_tests
+                      PRIVATE
+                      Catch2::Catch2WithMain)
+
 # Include the pthreads library because we may use the C++11 
 # threading features
 target_link_libraries(DoSums PRIVATE pthread) 
