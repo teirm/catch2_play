@@ -33,6 +33,10 @@ add_executable(DoSums
 target_include_directories(DoSums
                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+# Include the pthreads library because we may use the C++11 
+# threading features
+target_link_libraries(DoSums PRIVATE pthread) 
+
 # Add test executable as a target
 add_executable(summer_tests
                ${CMAKE_CURRENT_SOURCE_DIR}/src/Summer.cpp
@@ -41,18 +45,15 @@ add_executable(summer_tests
 target_include_directories(summer_tests
                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_link_libraries(summer_tests
-                      PRIVATE
-                      Catch2::Catch2WithMain)
+target_link_libraries(summer_tests 
+                      PRIVATE Catch2::Catch2WithMain
+                      PRIVATE pthread)
 
 # Register tests with Cmake
 include(CTest)
 include(${CMAKE_CURRENT_SOURCE_DIR}/lib/Catch2/extras/Catch.cmake)
 catch_discover_tests(summer_tests)
 
-# Include the pthreads library because we may use the C++11 
-# threading features
-target_link_libraries(DoSums PRIVATE pthread) 
 
 # Don't want gnu extensions to C++ standard
 # Cmake defaults to this on
