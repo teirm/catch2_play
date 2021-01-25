@@ -13,10 +13,10 @@ public:
     unsigned int add_value(unsigned int value);
     
     template<typename C>
-    unsigned int add_values(const C &values);
+    decltype(auto) add_values(const C &values);
     
     template<typename C>
-    std::future<unsigned int> add_values_async(const C &values);
+    decltype(auto) add_values_async(const C &values);
 
     unsigned int get_current_value() const; 
     void reset_value();
@@ -33,7 +33,7 @@ private:
 // Sum the given values and add it to the current value
 // Return the final value
 template<typename C>
-unsigned int Summer::add_values(const C &values)
+decltype(auto) Summer::add_values(const C &values)
 {
     auto temp = std::accumulate(values.cbegin(), values.cend(), value_);
 
@@ -46,7 +46,7 @@ unsigned int Summer::add_values(const C &values)
 // a future which will be populated with the final
 // well when the job finishes
 template<typename C>
-std::future<unsigned int> Summer::add_values_async(const C &values) 
+decltype(auto) Summer::add_values_async(const C &values) 
 {
     return std::async(std::launch::async, &Summer::add_values<C>, this, values);
 }
